@@ -1,5 +1,6 @@
 package org.example.snakefalling.entites;
 
+import org.example.snakefalling.rsc.Chrono;
 import org.example.snakefalling.rsc.Constantes;
 
 import java.awt.*;
@@ -9,6 +10,8 @@ import java.util.Objects;
 
 
 public class Serpent {
+
+    boolean changementligne=true;
 
     private static final int ELTS_MAX = 2;
     private static final int ELTS_MIN = 2;
@@ -102,6 +105,50 @@ public class Serpent {
 
     }
 
+    public  void deplacementUniteCorps(Cercle c, Graphics g){
+
+        Objects.requireNonNull(c);
+
+
+
+        effacer(c.getxPos(),c.getyPos(),g);
+
+        g.drawImage(c.getImage(), c.getxPos(), c.getyPos(), null);
+
+
+        int x= c.getxPos();
+
+        int y= c.getyPos();
+
+        int xPar100= x/100;
+
+        int yPar100= y/100;
+
+        xPar100 = xPar100 % 12;
+
+        yPar100 = yPar100 % 4;
+
+        c.setxPos((xPar100 +1)*100);
+
+
+    }
+
+    public void deplacementSerpent(Graphics g) {
+
+
+        deplacementUniteCorps(teteSerpent, g);
+
+
+        if (!this.elementsCorpsSerpent.isEmpty())
+
+            for (int i = 0; i < this.elementsCorpsSerpent.size(); i++)
+                deplacementUniteCorps(this.elementsCorpsSerpent.get(i), g);
+
+
+
+    }
+
+
     public Cercle getTeteSerpent() {
         return teteSerpent;
     }
@@ -147,4 +194,6 @@ public class Serpent {
     private int charsWidth(char[] data, int off, int len) {
         return stringWidth(new String(data, off, len));
     }
+
+
 }
