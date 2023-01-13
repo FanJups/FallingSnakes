@@ -110,8 +110,7 @@ public class Serpent {
         Objects.requireNonNull(c);
 
 
-
-        effacer(c.getxPos(),c.getyPos(),g);
+       // effacer(c.getxPos(),c.getyPos(),g);
 
         g.drawImage(c.getImage(), c.getxPos(), c.getyPos(), null);
 
@@ -126,7 +125,7 @@ public class Serpent {
 
         xPar100 = xPar100 % 12;
 
-        yPar100 = yPar100 % 4;
+        yPar100 = yPar100 % 3;
 
         c.setxPos((xPar100 +1)*100);
 
